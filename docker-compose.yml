@@ -1,0 +1,38 @@
+version: '3.3'
+
+networks:
+
+  it-mo:
+
+volumes:
+  pgdata:
+
+services:
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: lab3usr
+      POSTGRES_PASSWORD: lab3passwd
+      POSTGRES_DB: lab3
+    networks:
+      - it-mo
+
+  wildfly:
+    build:
+      context: .
+    container_name: wildfly-container
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    environment:
+      - POSTGRESQL_USER=lab3usr
+      - POSTGRESQL_PASSWORD=lab3passwd
+      - POSTGRESQL_DATABASE=lab3
+      - JAVA_OPTS=-Xms64m -Xmx512m
+      - DISABLE_LOGS=false
+    depends_on:
+      - database
+    networks:
+      - it-mo

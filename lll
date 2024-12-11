@@ -1,0 +1,8 @@
+javax.faces.partial.execute	"j_idt7:x-1"
+javax.faces.partial.render	"j_idt7:Xval"
+value	"-1"
+
+
+jakarta.faces.source	"j_idt7:x-1"
+jakarta.faces.partial.execute	"j_idt7:x-1"
+jakarta.faces.partial.render	"j_idt7:Xval"
